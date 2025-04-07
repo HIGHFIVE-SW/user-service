@@ -12,7 +12,7 @@ body:
     validations:
       required: true
 
-  - type: input
+  - type: textarea
     id: description
     attributes:
       label: '📝 상세 내용(Description)'
