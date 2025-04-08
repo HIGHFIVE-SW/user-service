@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import lombok.Builder;
 import lombok.Getter;
 
+//성공 응답 시 클라이언트에게 반환할 정보를 담는 DTO 입니다.
 @Getter
 @Builder
 public class ReasonDto {

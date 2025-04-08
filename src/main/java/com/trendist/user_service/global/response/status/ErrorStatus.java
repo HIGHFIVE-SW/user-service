@@ -8,6 +8,8 @@ import com.trendist.user_service.global.response.dto.ErrorReasonDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+//발생할 수 있는 다양한 오류 상황에 대해 미리 정의된 상수들을 모아두었습니다.
+//HTTP 상태, 코드, 메시지를 같이 가지고 있습니다.
 @Getter
 @AllArgsConstructor
 public enum ErrorStatus implements BaseErrorCode {

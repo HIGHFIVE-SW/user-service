@@ -9,6 +9,7 @@ import com.trendist.user_service.global.response.status.SuccessStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+//모든 API 응답의 기본 구조를 표준화하기 위해 사용되는 제네릭 클래스
 @Getter
 @AllArgsConstructor
 @JsonPropertyOrder({"isSuccess", "code", "message", "result"})

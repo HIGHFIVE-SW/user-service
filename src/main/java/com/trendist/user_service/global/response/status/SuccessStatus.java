@@ -8,6 +8,7 @@ import com.trendist.user_service.global.response.dto.ReasonDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+//성공 응답에 대한 상태 코드를 정의합니다.
 @Getter
 @AllArgsConstructor
 public enum SuccessStatus implements BaseCode {
