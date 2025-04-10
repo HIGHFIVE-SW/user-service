@@ -34,5 +34,5 @@ spring:
             user-name-attribute: sub
 
 jwt:
-  issuer: test@naver.com
-  secret_key: study-jwtloginregister
+  issuer: ${ISSUER}
+  secret_key: ${JWT_SECRET}
