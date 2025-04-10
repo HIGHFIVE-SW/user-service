@@ -42,7 +42,7 @@ public class OAuth2AuthenticationSuccessHandler implements AuthenticationSuccess
 		response.setCharacterEncoding("UTF-8"); // 추가적으로 문자 인코딩 설정
 
 		ApiResponse<JwtResponseDTO> apiResponse = ApiResponse.onSuccess(
-			new JwtResponseDTO(user.getId(), user.getUsername(), accessToken)
+			new JwtResponseDTO(user.getId(), user.getUsername(), user.getEmail(), accessToken)
 		);
 
 		new ObjectMapper().writeValue(response.getWriter(), apiResponse);

@@ -15,6 +15,7 @@ import lombok.Setter;
 @Builder
 public class JwtResponseDTO {
 	private UUID userId;
-	private String name;
+	private String username;
+	private String email;
 	private String accessToken;
 }

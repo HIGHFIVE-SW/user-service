@@ -26,7 +26,6 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class TokenProvider {
 	private final JwtProperties jwtProperties;
-	Key key = Keys.hmacShaKeyFor(jwtProperties.getSecretKey().getBytes(StandardCharsets.UTF_8));
 
 	public String generateToken(User user, Duration expiredAt) {
 		Date now = new Date();
@@ -35,6 +34,7 @@ public class TokenProvider {
 
 	private String makeToken(Date expiry, User user) {
 		Date now = new Date();
+		Key key = Keys.hmacShaKeyFor(jwtProperties.getSecretKey().getBytes(StandardCharsets.UTF_8));
 
 		return Jwts.builder()
 			.setHeaderParam(Header.TYPE, Header.JWT_TYPE)
@@ -48,6 +48,7 @@ public class TokenProvider {
 	}
 
 	public boolean validToken(String token) {
+		Key key = Keys.hmacShaKeyFor(jwtProperties.getSecretKey().getBytes(StandardCharsets.UTF_8));
 
 		try {
 			Jwts.parserBuilder()
@@ -68,6 +69,7 @@ public class TokenProvider {
 	}
 
 	private Claims getClaims(String token) {
+		Key key = Keys.hmacShaKeyFor(jwtProperties.getSecretKey().getBytes(StandardCharsets.UTF_8));
 
 		return Jwts.parserBuilder()
 			.setSigningKey(key)
