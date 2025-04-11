@@ -4,11 +4,7 @@ import java.util.UUID;
 
 import com.trendist.user_service.domain.user.domain.User;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Builder
 public record JwtResponseDTO(
