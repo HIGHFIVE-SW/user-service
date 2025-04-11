@@ -24,22 +24,22 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 
 	@Override
 	public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
-		OAuth2UserService<OAuth2UserRequest,OAuth2User> oauth=new DefaultOAuth2UserService();
-		OAuth2User oAuth2User=oauth.loadUser(userRequest);
+		OAuth2UserService<OAuth2UserRequest, OAuth2User> oauth = new DefaultOAuth2UserService();
+		OAuth2User oAuth2User = oauth.loadUser(userRequest);
 
 		String registrationId = userRequest.getClientRegistration().getRegistrationId();
-		String userNameAttributeName=userRequest.getClientRegistration()
+		String userNameAttributeName = userRequest.getClientRegistration()
 			.getProviderDetails()
 			.getUserInfoEndpoint()
 			.getUserNameAttributeName();
 
-		Map<String,Object> attributes=oAuth2User.getAttributes();
-		String email=(String)attributes.get("email");
-		String username=(String)attributes.get("name");
+		Map<String, Object> attributes = oAuth2User.getAttributes();
+		String email = (String)attributes.get("email");
+		String username = (String)attributes.get("name");
 
-		User user=userRepository.findByEmail(email)
-			.orElseGet(()->{
-				User newUser=User.builder()
+		User user = userRepository.findByEmail(email)
+			.orElseGet(() -> {
+				User newUser = User.builder()
 					.email(email)
 					.username(username)
 					.build();

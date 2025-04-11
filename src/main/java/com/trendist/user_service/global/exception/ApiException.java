@@ -6,18 +6,18 @@ import com.trendist.user_service.global.response.status.ErrorStatus;
 //발생하는 특정 오류 상황을 명시적으로 표현하기 위함.
 public class ApiException extends RuntimeException {
 
-  private final ErrorStatus errorStatus;
+	private final ErrorStatus errorStatus;
 
-  public ApiException(ErrorStatus errorStatus) {
-    super(errorStatus.getMessage());
-    this.errorStatus = errorStatus;
-  }
+	public ApiException(ErrorStatus errorStatus) {
+		super(errorStatus.getMessage());
+		this.errorStatus = errorStatus;
+	}
 
-  public ErrorReasonDto getErrorReason() {
-    return this.errorStatus.getReason();
-  }
+	public ErrorReasonDto getErrorReason() {
+		return this.errorStatus.getReason();
+	}
 
-  public ErrorReasonDto getErrorReasonHttpStatus() {
-    return this.errorStatus.getReasonHttpStatus();
-  }
+	public ErrorReasonDto getErrorReasonHttpStatus() {
+		return this.errorStatus.getReasonHttpStatus();
+	}
 }
