@@ -15,8 +15,8 @@ public record UserFirstLoginSetupResponse(
 	String username,
 	String nickname,
 	Set<Keyword> keywords
-	) {
-	public static UserFirstLoginSetupResponse from(User user){
+) {
+	public static UserFirstLoginSetupResponse from(User user) {
 		return UserFirstLoginSetupResponse.builder()
 			.id(user.getId())
 			.email(user.getEmail())

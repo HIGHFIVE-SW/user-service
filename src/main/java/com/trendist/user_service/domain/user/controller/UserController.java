@@ -2,7 +2,6 @@ package com.trendist.user_service.domain.user.controller;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,7 +22,7 @@ public class UserController {
 	@PostMapping("/profile")
 	public ApiResponse<UserFirstLoginSetupResponse> setUserProfile(
 		@AuthenticationPrincipal String email,
-		@RequestBody UserFirstLoginSetupRequest request){
-		return ApiResponse.onSuccess(userService.setUserProfile(email,request));
+		@RequestBody UserFirstLoginSetupRequest request) {
+		return ApiResponse.onSuccess(userService.setUserProfile(email, request));
 	}
 }
