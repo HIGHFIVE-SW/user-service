@@ -19,6 +19,7 @@ import lombok.RequiredArgsConstructor;
 public class UserService {
 	private final UserRepository userRepository;
 
+	// 처음 로그인한 사용자의 경우 초기 정보 입력하는 로직
 	public UserFirstLoginSetupResponse setUserProfile(String email,
 		UserFirstLoginSetupRequest userFirstLoginSetupRequest) {
 		User user = getUser(email);
@@ -34,6 +35,7 @@ public class UserService {
 		return UserFirstLoginSetupResponse.from(userRepository.save(user));
 	}
 
+	//사용자의 프로필을 가지고 오는 로직
 	public UserProfileResponse getUserProfile(String email) {
 		User user = getUser(email);
 		return UserProfileResponse.from(user);
