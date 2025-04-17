@@ -23,8 +23,13 @@ public class UserService {
 		UserFirstLoginSetupRequest userFirstLoginSetupRequest) {
 		User user = getUser(email);
 
+		if (user.getIsJoined()) {
+			throw new ApiException(ErrorStatus._USER_NOT_FIRST_LOGIN);
+		}
+
 		user.setNickname(userFirstLoginSetupRequest.nickname());
 		user.setKeywords(userFirstLoginSetupRequest.keywords());
+		user.setIsJoined(true);
 
 		return UserFirstLoginSetupResponse.from(userRepository.save(user));
 	}

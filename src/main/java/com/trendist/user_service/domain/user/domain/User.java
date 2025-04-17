@@ -50,6 +50,10 @@ public class User extends BaseTimeEntity {
 	@Column(name = "keyword")
 	private Set<Keyword> keywords;
 
+	@Column(name = "is_joined")
+	@Builder.Default
+	private Boolean isJoined = false;
+
 	@Column(name = "exp")
 	@Builder.Default
 	private Integer exp = 0;
