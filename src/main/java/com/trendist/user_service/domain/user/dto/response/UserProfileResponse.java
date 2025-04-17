@@ -15,9 +15,11 @@ public record UserProfileResponse(
 	String email,
 	String nickname,
 	Set<Keyword> keywords,
-	int exp
+	int exp,
+	String tierName,
+	String tierImageUrl
 ) {
-	public static UserProfileResponse from(User user){
+	public static UserProfileResponse from(User user) {
 		return UserProfileResponse.builder()
 			.id(user.getId())
 			.username(user.getUsername())
@@ -25,6 +27,8 @@ public record UserProfileResponse(
 			.nickname(user.getNickname())
 			.keywords(user.getKeywords())
 			.exp(user.getExp())
+			.tierName(user.getTier().getTierName())
+			.tierImageUrl(user.getTier().getTierImageUrl())
 			.build();
 	}
 }

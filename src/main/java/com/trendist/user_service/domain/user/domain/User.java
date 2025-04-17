@@ -3,6 +3,7 @@ package com.trendist.user_service.domain.user.domain;
 import java.util.Set;
 import java.util.UUID;
 
+import com.trendist.user_service.domain.tier.domain.Tier;
 import com.trendist.user_service.global.common.domain.BaseTimeEntity;
 
 import jakarta.persistence.CollectionTable;
@@ -16,6 +17,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -57,6 +59,10 @@ public class User extends BaseTimeEntity {
 	@Column(name = "exp")
 	@Builder.Default
 	private Integer exp = 0;
+
+	@ManyToOne
+	@JoinColumn(name = "tier_id")
+	private Tier tier;
 
 	/*@Column(name="ranking")
 	private Integer ranking;*/

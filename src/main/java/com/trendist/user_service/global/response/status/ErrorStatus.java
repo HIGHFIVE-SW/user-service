@@ -20,10 +20,11 @@ public enum ErrorStatus implements BaseErrorCode {
 	_FORBIDDEN(HttpStatus.FORBIDDEN, "COMMON403", "금지된 요청입니다."),
 
 	_JWT_NOT_FOUND(HttpStatus.NOT_FOUND, "JWT_001", "Header에 JWT가 존재하지 않습니다."),
-	_GITHUB_TOKEN_GENERATION_ERROR(HttpStatus.NOT_FOUND, "JWT_002", "깃허브에서 엑세스 토큰을 발급하는 과정에서 오류가 발생했습니다."),
 
 	_USER_NOT_FOUND(HttpStatus.NOT_FOUND, "USER_001", "해당 유저가 존재하지 않습니다"),
-	_USER_NOT_FIRST_LOGIN(HttpStatus.BAD_REQUEST, "USER_002", "최초 로그인한 유저가 아닙니다.");
+	_USER_NOT_FIRST_LOGIN(HttpStatus.BAD_REQUEST, "USER_002", "최초 로그인한 유저가 아닙니다."),
+
+	_TIER_NOT_FOUND(HttpStatus.NOT_FOUND, "TIER_001", "해당 티어를 찾을 수 없습니다.");
 
 	private final HttpStatus httpStatus;
 	private final String code;
