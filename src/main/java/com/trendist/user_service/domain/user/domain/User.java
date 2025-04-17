@@ -50,10 +50,10 @@ public class User extends BaseTimeEntity {
 	@Column(name = "keyword")
 	private Set<Keyword> keyword;
 
-	/*@Column(name = "exp")
+	@Column(name = "exp")
 	@Builder.Default
 	private Integer exp = 0;
 
-	@Column(name="ranking")
+	/*@Column(name="ranking")
 	private Integer ranking;*/
 }
