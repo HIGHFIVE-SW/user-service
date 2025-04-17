@@ -9,20 +9,22 @@ import com.trendist.user_service.domain.user.domain.User;
 import lombok.Builder;
 
 @Builder
-public record UserFirstLoginSetupResponse(
+public record UserProfileResponse(
 	UUID id,
-	String email,
 	String username,
+	String email,
 	String nickname,
-	Set<Keyword> keywords
+	Set<Keyword> keywords,
+	int exp
 ) {
-	public static UserFirstLoginSetupResponse from(User user) {
-		return UserFirstLoginSetupResponse.builder()
+	public static UserProfileResponse from(User user){
+		return UserProfileResponse.builder()
 			.id(user.getId())
-			.email(user.getEmail())
 			.username(user.getUsername())
+			.email(user.getEmail())
 			.nickname(user.getNickname())
 			.keywords(user.getKeywords())
+			.exp(user.getExp())
 			.build();
 	}
 }

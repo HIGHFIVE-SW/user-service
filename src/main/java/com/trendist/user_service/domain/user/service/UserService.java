@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import com.trendist.user_service.domain.user.domain.User;
 import com.trendist.user_service.domain.user.dto.request.UserFirstLoginSetupRequest;
 import com.trendist.user_service.domain.user.dto.response.UserFirstLoginSetupResponse;
+import com.trendist.user_service.domain.user.dto.response.UserProfileResponse;
 import com.trendist.user_service.domain.user.repository.UserRepository;
 import com.trendist.user_service.global.exception.ApiException;
 import com.trendist.user_service.global.response.status.ErrorStatus;
@@ -23,9 +24,14 @@ public class UserService {
 		User user = getUser(email);
 
 		user.setNickname(userFirstLoginSetupRequest.nickname());
-		user.setKeyword(userFirstLoginSetupRequest.keywords());
+		user.setKeywords(userFirstLoginSetupRequest.keywords());
 
 		return UserFirstLoginSetupResponse.from(userRepository.save(user));
+	}
+
+	public UserProfileResponse getUserProfile(String email) {
+		User user = getUser(email);
+		return UserProfileResponse.from(user);
 	}
 
 	private User getUser(String email) {

@@ -48,7 +48,7 @@ public class User extends BaseTimeEntity {
 	@Enumerated(EnumType.STRING)
 	@CollectionTable(name = "user_keywords", joinColumns = @JoinColumn(name = "user_id"))
 	@Column(name = "keyword")
-	private Set<Keyword> keyword;
+	private Set<Keyword> keywords;
 
 	@Column(name = "exp")
 	@Builder.Default
