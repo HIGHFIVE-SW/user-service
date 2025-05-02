@@ -13,6 +13,7 @@ import com.trendist.user_service.domain.user.dto.response.UserProfileResponse;
 import com.trendist.user_service.domain.user.service.UserService;
 import com.trendist.user_service.global.response.ApiResponse;
 
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -21,6 +22,10 @@ import lombok.RequiredArgsConstructor;
 public class UserController {
 	private final UserService userService;
 
+	@Operation(
+		summary = "사용자 초기 정보 입력",
+		description = "사용자가 최초 로그인 시 초기 정보를 입력합니다."
+	)
 	@PostMapping("/profile")
 	public ApiResponse<UserFirstLoginSetupResponse> setUserProfile(
 		@AuthenticationPrincipal String email,
@@ -28,6 +33,10 @@ public class UserController {
 		return ApiResponse.onSuccess(userService.setUserProfile(email, request));
 	}
 
+	@Operation(
+		summary = "본인 프로필 조회",
+		description = "로그인한 본인의 프로필을 조회합니다."
+	)
 	@GetMapping("/profile")
 	public ApiResponse<UserProfileResponse> getUserProfile(
 		@AuthenticationPrincipal String email

@@ -36,7 +36,7 @@ public class SecurityConfig {
 		return http
 			.authorizeHttpRequests(auth -> auth
 				.requestMatchers(
-					"/oauth2/**", "/api/token"
+					"/oauth2/**", "/api/token", "/swagger-ui/**", "/v3/api-docs/**"
 				).permitAll()
 				.anyRequest().authenticated())
 			.oauth2Login(oauth2 -> oauth2
