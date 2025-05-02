@@ -15,8 +15,8 @@ import io.swagger.v3.oas.models.security.SecurityScheme;
 import io.swagger.v3.oas.models.servers.Server;
 
 @OpenAPIDefinition(info = @Info(
-	title = "Trendist API",
-	description = "Trendist API 문서",
+	title = "Trendist User-service API",
+	description = "Trendist User-service API 문서",
 	version = "v1.0.0"))
 
 @Configuration
