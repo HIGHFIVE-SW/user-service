@@ -56,5 +56,7 @@ jwt:
   issuer: ${ISSUER}
   secret_key: ${JWT_SECRET}
 
+server-uri: http://localhost:8080
+
 management.endpoint.health.show-details: "ALWAYS"
 management.endpoints.web.exposure.include: "*"
