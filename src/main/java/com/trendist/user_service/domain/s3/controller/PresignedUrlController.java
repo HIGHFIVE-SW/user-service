@@ -15,13 +15,13 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/posts")
+@RequestMapping("/users")
 public class PresignedUrlController {
 	private final PresignedUrlService presignedUrlService;
 
 	@Operation(
 		summary = "PresignedUrl 발급",
-		description = "s3 버킷에 이미지를 업로드하기 위한 PresignedUrl을 발급합니다."
+		description = "s3 버킷에 프로필 이미지를 업로드하기 위한 PresignedUrl을 발급합니다."
 	)
 	@PostMapping("/presignedurls")
 	public ApiResponse<PresignedUrlResponse> getPresignedUrl(@RequestBody PresignedUrlRequest presignedUrlRequest) {

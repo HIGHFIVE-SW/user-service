@@ -9,7 +9,8 @@ import lombok.Builder;
 @Builder
 public record UserFirstLoginSetupRequest(
 	String nickname,
-	Set<Keyword> keywords
+	Set<Keyword> keywords,
+	String profileUrl
 ) {
 
 }

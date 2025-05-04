@@ -15,6 +15,7 @@ public record UserFirstLoginSetupResponse(
 	String username,
 	String nickname,
 	Set<Keyword> keywords,
+	String profileUrl,
 	Boolean isJoined
 ) {
 	public static UserFirstLoginSetupResponse from(User user) {
@@ -24,6 +25,7 @@ public record UserFirstLoginSetupResponse(
 			.username(user.getUsername())
 			.nickname(user.getNickname())
 			.keywords(user.getKeywords())
+			.profileUrl(user.getProfileUrl())
 			.isJoined(user.getIsJoined())
 			.build();
 	}

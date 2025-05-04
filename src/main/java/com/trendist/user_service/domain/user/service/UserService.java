@@ -32,6 +32,11 @@ public class UserService {
 		user.setKeywords(userFirstLoginSetupRequest.keywords());
 		user.setIsJoined(true);
 
+		if (userFirstLoginSetupRequest.profileUrl() != null
+			&& !userFirstLoginSetupRequest.profileUrl().isBlank()) {
+			user.setProfileUrl(userFirstLoginSetupRequest.profileUrl());
+		}
+
 		return UserFirstLoginSetupResponse.from(userRepository.save(user));
 	}
 

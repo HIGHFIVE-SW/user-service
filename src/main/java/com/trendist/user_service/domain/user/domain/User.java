@@ -52,6 +52,10 @@ public class User extends BaseTimeEntity {
 	@Column(name = "keyword")
 	private Set<Keyword> keywords;
 
+	@Column(name = "profile_url")
+	@Builder.Default
+	String profileUrl = "기본값";
+
 	@Column(name = "is_joined")
 	@Builder.Default
 	private Boolean isJoined = false;
