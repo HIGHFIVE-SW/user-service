@@ -15,6 +15,7 @@ public record UserProfileResponse(
 	String email,
 	String nickname,
 	Set<Keyword> keywords,
+	String profileUrl,
 	int exp,
 	String tierName,
 	String tierImageUrl
@@ -26,6 +27,7 @@ public record UserProfileResponse(
 			.email(user.getEmail())
 			.nickname(user.getNickname())
 			.keywords(user.getKeywords())
+			.profileUrl(user.getProfileUrl())
 			.exp(user.getExp())
 			.tierName(user.getTier().getTierName())
 			.tierImageUrl(user.getTier().getTierImageUrl())
