@@ -46,11 +46,9 @@ public class User extends BaseTimeEntity {
 	@Column(name = "nickname")
 	private String nickname;
 
-	@ElementCollection(fetch = FetchType.EAGER)
 	@Enumerated(EnumType.STRING)
-	@CollectionTable(name = "user_keywords", joinColumns = @JoinColumn(name = "user_id"))
 	@Column(name = "keyword")
-	private Set<Keyword> keywords;
+	private Keyword keyword;
 
 	@Column(name = "profile_url")
 	@Builder.Default

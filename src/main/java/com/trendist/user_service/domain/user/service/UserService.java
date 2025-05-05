@@ -29,7 +29,7 @@ public class UserService {
 		}
 
 		user.setNickname(userFirstLoginSetupRequest.nickname());
-		user.setKeywords(userFirstLoginSetupRequest.keywords());
+		user.setKeyword(userFirstLoginSetupRequest.keyword());
 		user.setIsJoined(true);
 
 		if (userFirstLoginSetupRequest.profileUrl() != null

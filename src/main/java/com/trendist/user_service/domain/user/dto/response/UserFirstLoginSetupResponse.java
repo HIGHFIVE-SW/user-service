@@ -14,7 +14,7 @@ public record UserFirstLoginSetupResponse(
 	String email,
 	String username,
 	String nickname,
-	Set<Keyword> keywords,
+	Keyword keyword,
 	String profileUrl,
 	Boolean isJoined
 ) {
@@ -24,7 +24,7 @@ public record UserFirstLoginSetupResponse(
 			.email(user.getEmail())
 			.username(user.getUsername())
 			.nickname(user.getNickname())
-			.keywords(user.getKeywords())
+			.keyword(user.getKeyword())
 			.profileUrl(user.getProfileUrl())
 			.isJoined(user.getIsJoined())
 			.build();
