@@ -1,6 +1,5 @@
 package com.trendist.user_service.domain.user.dto.response;
 
-import java.util.Set;
 import java.util.UUID;
 
 import com.trendist.user_service.domain.user.domain.Keyword;
