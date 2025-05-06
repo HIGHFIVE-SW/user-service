@@ -1,7 +1,10 @@
 package com.trendist.user_service.domain.user.controller;
 
+import java.util.UUID;
+
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,9 +41,18 @@ public class UserController {
 		description = "로그인한 본인의 프로필을 조회합니다."
 	)
 	@GetMapping("/profile")
-	public ApiResponse<UserProfileResponse> getUserProfile(
+	public ApiResponse<UserProfileResponse> getMyProfile(
 		@AuthenticationPrincipal String email
 	) {
-		return ApiResponse.onSuccess(userService.getUserProfile(email));
+		return ApiResponse.onSuccess(userService.getMyProfile(email));
+	}
+
+	@Operation(
+		summary = "특정 사용자의 프로필 조회",
+		description = "특정 사용자의 프로필을 조회합니다."
+	)
+	@GetMapping("/profile/{userId}")
+	public ApiResponse<UserProfileResponse> getUserProfile(@PathVariable(name = "userId") UUID userId) {
+		return ApiResponse.onSuccess(userService.getUserProfile(userId));
 	}
 }

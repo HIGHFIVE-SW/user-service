@@ -1,5 +1,7 @@
 package com.trendist.user_service.domain.user.service;
 
+import java.util.UUID;
+
 import org.springframework.stereotype.Service;
 
 import com.trendist.user_service.domain.user.domain.User;
@@ -40,14 +42,25 @@ public class UserService {
 		return UserFirstLoginSetupResponse.from(userRepository.save(user));
 	}
 
-	//사용자의 프로필을 가지고 오는 로직
-	public UserProfileResponse getUserProfile(String email) {
+	//본인의 프로필을 가지고 오는 로직
+	public UserProfileResponse getMyProfile(String email) {
 		User user = getUser(email);
+		return UserProfileResponse.from(user);
+	}
+
+	//특정 사용자의 프로필을 가지고 오는 로직
+	public UserProfileResponse getUserProfile(UUID userId) {
+		User user = getUser(userId);
 		return UserProfileResponse.from(user);
 	}
 
 	private User getUser(String email) {
 		return userRepository.findByEmail(email)
+			.orElseThrow(() -> new ApiException(ErrorStatus._USER_NOT_FOUND));
+	}
+
+	private User getUser(UUID userId) {
+		return userRepository.findById(userId)
 			.orElseThrow(() -> new ApiException(ErrorStatus._USER_NOT_FOUND));
 	}
 }
