@@ -1,6 +1,5 @@
 package com.trendist.user_service.domain.user.dto.response;
 
-import java.util.Set;
 import java.util.UUID;
 
 import com.trendist.user_service.domain.user.domain.Keyword;
@@ -14,7 +13,8 @@ public record UserProfileResponse(
 	String username,
 	String email,
 	String nickname,
-	Set<Keyword> keywords,
+	Keyword keyword,
+	String profileUrl,
 	int exp,
 	String tierName,
 	String tierImageUrl
@@ -25,7 +25,8 @@ public record UserProfileResponse(
 			.username(user.getUsername())
 			.email(user.getEmail())
 			.nickname(user.getNickname())
-			.keywords(user.getKeywords())
+			.keyword(user.getKeyword())
+			.profileUrl(user.getProfileUrl())
 			.exp(user.getExp())
 			.tierName(user.getTier().getTierName())
 			.tierImageUrl(user.getTier().getTierImageUrl())

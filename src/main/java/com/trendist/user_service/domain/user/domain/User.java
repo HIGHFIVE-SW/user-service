@@ -1,18 +1,14 @@
 package com.trendist.user_service.domain.user.domain;
 
-import java.util.Set;
 import java.util.UUID;
 
 import com.trendist.user_service.domain.tier.domain.Tier;
 import com.trendist.user_service.global.common.domain.BaseTimeEntity;
 
-import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
-import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -46,11 +42,13 @@ public class User extends BaseTimeEntity {
 	@Column(name = "nickname")
 	private String nickname;
 
-	@ElementCollection(fetch = FetchType.EAGER)
 	@Enumerated(EnumType.STRING)
-	@CollectionTable(name = "user_keywords", joinColumns = @JoinColumn(name = "user_id"))
 	@Column(name = "keyword")
-	private Set<Keyword> keywords;
+	private Keyword keyword;
+
+	@Column(name = "profile_url")
+	@Builder.Default
+	String profileUrl = "기본값";
 
 	@Column(name = "is_joined")
 	@Builder.Default

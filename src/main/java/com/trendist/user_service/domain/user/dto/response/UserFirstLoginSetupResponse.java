@@ -1,6 +1,5 @@
 package com.trendist.user_service.domain.user.dto.response;
 
-import java.util.Set;
 import java.util.UUID;
 
 import com.trendist.user_service.domain.user.domain.Keyword;
@@ -14,7 +13,8 @@ public record UserFirstLoginSetupResponse(
 	String email,
 	String username,
 	String nickname,
-	Set<Keyword> keywords,
+	Keyword keyword,
+	String profileUrl,
 	Boolean isJoined
 ) {
 	public static UserFirstLoginSetupResponse from(User user) {
@@ -23,7 +23,8 @@ public record UserFirstLoginSetupResponse(
 			.email(user.getEmail())
 			.username(user.getUsername())
 			.nickname(user.getNickname())
-			.keywords(user.getKeywords())
+			.keyword(user.getKeyword())
+			.profileUrl(user.getProfileUrl())
 			.isJoined(user.getIsJoined())
 			.build();
 	}
