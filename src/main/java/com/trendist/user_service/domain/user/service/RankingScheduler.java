@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 public class RankingScheduler {
 	private final UserRepository userRepository;
 
-	@Scheduled(cron = " 0 00 00 * * *")
+	@Scheduled(cron = "0 0 0 * * *")
 	@Transactional
 	public void updateUserRanking() {
 		List<User> users = userRepository.findAllByOrderByExpDesc();
