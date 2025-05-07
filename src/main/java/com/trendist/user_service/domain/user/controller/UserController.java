@@ -1,15 +1,23 @@
 package com.trendist.user_service.domain.user.controller;
 
+import java.util.List;
+import java.util.UUID;
+
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.trendist.user_service.domain.user.dto.request.UserFirstLoginSetupRequest;
+import com.trendist.user_service.domain.user.dto.request.UserProfileUpdateRequest;
+import com.trendist.user_service.domain.user.dto.response.RankingResponse;
 import com.trendist.user_service.domain.user.dto.response.UserFirstLoginSetupResponse;
 import com.trendist.user_service.domain.user.dto.response.UserProfileResponse;
+import com.trendist.user_service.domain.user.dto.response.UserProfileUpdateResponse;
 import com.trendist.user_service.domain.user.service.UserService;
 import com.trendist.user_service.global.response.ApiResponse;
 
@@ -34,13 +42,42 @@ public class UserController {
 	}
 
 	@Operation(
+		summary = "사용자 프로필 수정",
+		description = "사용자 프로필을 수정합니다."
+	)
+	@PatchMapping("/profile/update")
+	public ApiResponse<UserProfileUpdateResponse> updateProfile(
+		@AuthenticationPrincipal String email,
+		@RequestBody UserProfileUpdateRequest userProfileUpdateRequest) {
+		return ApiResponse.onSuccess(userService.updateProfile(email, userProfileUpdateRequest));
+	}
+
+	@Operation(
 		summary = "본인 프로필 조회",
 		description = "로그인한 본인의 프로필을 조회합니다."
 	)
 	@GetMapping("/profile")
-	public ApiResponse<UserProfileResponse> getUserProfile(
+	public ApiResponse<UserProfileResponse> getMyProfile(
 		@AuthenticationPrincipal String email
 	) {
-		return ApiResponse.onSuccess(userService.getUserProfile(email));
+		return ApiResponse.onSuccess(userService.getMyProfile(email));
+	}
+
+	@Operation(
+		summary = "특정 사용자의 프로필 조회",
+		description = "특정 사용자의 프로필을 조회합니다."
+	)
+	@GetMapping("/profile/{userId}")
+	public ApiResponse<UserProfileResponse> getUserProfile(@PathVariable(name = "userId") UUID userId) {
+		return ApiResponse.onSuccess(userService.getUserProfile(userId));
+	}
+
+	@Operation(
+		summary = "랭킹 조회",
+		description = "사용자들의 랭킹을 조회합니다."
+	)
+	@GetMapping("/rankings")
+	public ApiResponse<List<RankingResponse>> getRanking() {
+		return ApiResponse.onSuccess(userService.getRanking());
 	}
 }

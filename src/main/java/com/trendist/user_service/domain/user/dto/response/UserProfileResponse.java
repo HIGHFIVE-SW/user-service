@@ -17,7 +17,8 @@ public record UserProfileResponse(
 	String profileUrl,
 	int exp,
 	String tierName,
-	String tierImageUrl
+	String tierImageUrl,
+	int ranking
 ) {
 	public static UserProfileResponse from(User user) {
 		return UserProfileResponse.builder()
@@ -30,6 +31,7 @@ public record UserProfileResponse(
 			.exp(user.getExp())
 			.tierName(user.getTier().getTierName())
 			.tierImageUrl(user.getTier().getTierImageUrl())
+			.ranking(user.getRanking())
 			.build();
 	}
 }
