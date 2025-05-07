@@ -62,6 +62,7 @@ public class User extends BaseTimeEntity {
 	@JoinColumn(name = "tier_id")
 	private Tier tier;
 
-	/*@Column(name="ranking")
-	private Integer ranking;*/
+	@Column(name = "ranking")
+	@Builder.Default
+	private Integer ranking = 0;
 }

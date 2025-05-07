@@ -1,5 +1,6 @@
 package com.trendist.user_service.domain.user.controller;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.trendist.user_service.domain.user.dto.request.UserFirstLoginSetupRequest;
 import com.trendist.user_service.domain.user.dto.request.UserProfileUpdateRequest;
+import com.trendist.user_service.domain.user.dto.response.RankingResponse;
 import com.trendist.user_service.domain.user.dto.response.UserFirstLoginSetupResponse;
 import com.trendist.user_service.domain.user.dto.response.UserProfileResponse;
 import com.trendist.user_service.domain.user.dto.response.UserProfileUpdateResponse;
@@ -68,5 +70,14 @@ public class UserController {
 	@GetMapping("/profile/{userId}")
 	public ApiResponse<UserProfileResponse> getUserProfile(@PathVariable(name = "userId") UUID userId) {
 		return ApiResponse.onSuccess(userService.getUserProfile(userId));
+	}
+
+	@Operation(
+		summary = "랭킹 조회",
+		description = "사용자들의 랭킹을 조회합니다."
+	)
+	@GetMapping("/rankings")
+	public ApiResponse<List<RankingResponse>> getRanking() {
+		return ApiResponse.onSuccess(userService.getRanking());
 	}
 }

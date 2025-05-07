@@ -1,5 +1,6 @@
 package com.trendist.user_service.domain.user.service;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.trendist.user_service.domain.user.domain.User;
 import com.trendist.user_service.domain.user.dto.request.UserFirstLoginSetupRequest;
 import com.trendist.user_service.domain.user.dto.request.UserProfileUpdateRequest;
+import com.trendist.user_service.domain.user.dto.response.RankingResponse;
 import com.trendist.user_service.domain.user.dto.response.UserFirstLoginSetupResponse;
 import com.trendist.user_service.domain.user.dto.response.UserProfileResponse;
 import com.trendist.user_service.domain.user.dto.response.UserProfileUpdateResponse;
@@ -66,6 +68,13 @@ public class UserService {
 	public UserProfileResponse getUserProfile(UUID userId) {
 		User user = getUser(userId);
 		return UserProfileResponse.from(user);
+	}
+
+	public List<RankingResponse> getRanking() {
+		return userRepository.findAllByRankingGreaterThanOrderByRankingAsc(0)
+			.stream()
+			.map(RankingResponse::from)
+			.toList();
 	}
 
 	private User getUser(String email) {
