@@ -2,8 +2,6 @@ server:
   port: 8080
 
 spring:
-  profiles:
-    active: local
   application:
     name: user-service
   cloud:
@@ -11,9 +9,9 @@ spring:
       region:
         static: ap-northeast-2
   datasource:
-    url: ${DB_URL}
+    url: ENC(YU7Ez+Pl4P4PNneCm6+lPs67adGFJeIiv3PRPkBWmJfNKEt5s+xcu/usTErojlLj6YnjgWqKsYEIr6mHGW+qE+AUdd0ghAk0KFlAPucf5GMk0I1Jx5cVe6LEIbP9DsYQ)
     username: admin
-    password: ${DB_PASSWORD}
+    password: ENC(4xY2Fy6SFr57kP3Fo36jwsy4CXilVjxe)
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
@@ -35,12 +33,12 @@ spring:
       client:
         registration:
           google:
-            client-id: ${CLIENT_ID}
-            client-secret: ${CLIENT_SECRET}
+            client-id: ENC(U63l/kbiO6aN8Wr8lZ2U0BW1LfiQt+6Aww3b0aCSry+RuQLPTlxzv8BnpTEE59+zeyRYwpnWO+KlMIlTcAuMBhbgkPP8N83/uMRCpDSAgmgJKS6zCrTGTg==)
+            client-secret: ENC(NJhASm6fX4HkNrkB2/eEB99q3d9MH4ATouvSMXfPS1xCOnoVGFC0BXgUL2f3auue)
             scope:
               - email
               - profile
-            redirect-uri: "http://localhost:8080/login/oauth2/code/google"
+            redirect-uri: "http://61.109.236.137.nip.io:8080/login/oauth2/code/google"
             client-name: google
         provider:
           google:
@@ -54,21 +52,21 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://61.109.236.137:8761/eureka
   instance:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 
 jwt:
-  issuer: ${ISSUER}
-  secret_key: ${JWT_SECRET}
+  issuer: ENC(8JbVtCQMgR7DQurTtnAb7k/HYH4r4iyB)
+  secret_key: ENC(RKKr5UauTCMlEx5eHNt8Pa3C7A0dhhYXXB5OOMopu5GLNbt06MS1aEqqkOvKYSyO)
 
-server-uri: http://localhost:8080
+server-uri: http://61.109.236.137:8080
 
 aws:
   s3:
-    accessKey: ${S3_ACCESS_KEY}
-    secretKey: ${S3_SECRET_KEY}
-    bucketName: ${S3_BUCKET}
+    accessKey: ENC(8IYMYRzQwxKFWr3iywL+VyfNjCdAbyRbjJ2ybVqPnIU=)
+    secretKey: ENC(qSfJ5Benjz8IXhWyQGZm6d7ka5ca16M9ledzfW0Tu4lx8qUlU4JA/sNxz/H0T3FijLh0OlGDeZM=)
+    bucketName: ENC(F+TGhwlzclunqnTf74kePSv9+PA7MaZ4)
     region: ap-northeast-2
     prefix: profiles
 
