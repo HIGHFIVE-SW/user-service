@@ -60,7 +60,7 @@ jwt:
   issuer: ENC(8JbVtCQMgR7DQurTtnAb7k/HYH4r4iyB)
   secret_key: ENC(RKKr5UauTCMlEx5eHNt8Pa3C7A0dhhYXXB5OOMopu5GLNbt06MS1aEqqkOvKYSyO)
 
-server-uri: http://61.109.236.137:8080
+server-uri: http://61.109.236.137:8000
 
 aws:
   s3:
