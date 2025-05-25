@@ -77,6 +77,13 @@ public class UserService {
 			.toList();
 	}
 
+	public List<RankingResponse> getRankingByTier(String tierName) {
+		return userRepository.findByTier_TierNameAndRankingGreaterThanOrderByRankingAsc(tierName, 0)
+			.stream()
+			.map(RankingResponse::from)
+			.toList();
+	}
+
 	private User getUser(String email) {
 		return userRepository.findByEmail(email)
 			.orElseThrow(() -> new ApiException(ErrorStatus._USER_NOT_FOUND));

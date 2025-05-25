@@ -28,28 +28,22 @@ import lombok.Setter;
 @AllArgsConstructor
 public class User extends BaseTimeEntity {
 
+	@Column(name = "profile_url")
+	@Builder.Default
+	String profileUrl = "기본값";
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)
 	@Column(name = "user_id")
 	private UUID id;
-
 	@Column(name = "username")
 	private String username;
-
 	@Column(name = "email")
 	private String email;
-
 	@Column(name = "nickname")
 	private String nickname;
-
 	@Enumerated(EnumType.STRING)
 	@Column(name = "keyword")
 	private Keyword keyword;
-
-	@Column(name = "profile_url")
-	@Builder.Default
-	String profileUrl = "기본값";
-
 	@Column(name = "is_joined")
 	@Builder.Default
 	private Boolean isJoined = false;

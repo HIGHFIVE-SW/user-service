@@ -80,4 +80,13 @@ public class UserController {
 	public ApiResponse<List<RankingResponse>> getRanking() {
 		return ApiResponse.onSuccess(userService.getRanking());
 	}
+
+	@Operation(
+		summary = "티어별 랭킹 조회",
+		description = "각 티어별로 사용자들의 랭킹을 조회합니다."
+	)
+	@GetMapping("/rankings/{tierName}")
+	public ApiResponse<List<RankingResponse>> getRankingByTier(@PathVariable String tierName) {
+		return ApiResponse.onSuccess(userService.getRankingByTier(tierName));
+	}
 }
