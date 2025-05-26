@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import com.trendist.user_service.domain.tier.domain.Tier;
 import com.trendist.user_service.domain.user.domain.User;
 import com.trendist.user_service.domain.user.dto.request.UserFirstLoginSetupRequest;
 import com.trendist.user_service.domain.user.dto.request.UserProfileUpdateRequest;
@@ -70,18 +71,19 @@ public class UserService {
 		return UserProfileResponse.from(user);
 	}
 
-	public List<RankingResponse> getRanking() {
-		return userRepository.findAllByRankingGreaterThanOrderByRankingAsc(0)
+	public List<RankingResponse> getRankingByTier(String tierName) {
+		return userRepository.findByTier_TierNameOrderByRankingAsc(tierName)
 			.stream()
+			.filter(user -> user.getRanking() > 0)
 			.map(RankingResponse::from)
 			.toList();
 	}
 
-	public List<RankingResponse> getRankingByTier(String tierName) {
-		return userRepository.findByTier_TierNameAndRankingGreaterThanOrderByRankingAsc(tierName, 0)
-			.stream()
-			.map(RankingResponse::from)
-			.toList();
+	public List<RankingResponse> getMyTierRanking(String email) {
+		User currentUser = getUser(email);
+		Tier userTier = currentUser.getTier();
+		String tierName = userTier.getTierName();
+		return getRankingByTier(tierName);
 	}
 
 	private User getUser(String email) {

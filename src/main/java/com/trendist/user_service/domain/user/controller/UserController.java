@@ -73,20 +73,22 @@ public class UserController {
 	}
 
 	@Operation(
-		summary = "랭킹 조회",
-		description = "사용자들의 랭킹을 조회합니다."
-	)
-	@GetMapping("/rankings")
-	public ApiResponse<List<RankingResponse>> getRanking() {
-		return ApiResponse.onSuccess(userService.getRanking());
-	}
-
-	@Operation(
 		summary = "티어별 랭킹 조회",
 		description = "각 티어별로 사용자들의 랭킹을 조회합니다."
 	)
 	@GetMapping("/rankings/{tierName}")
 	public ApiResponse<List<RankingResponse>> getRankingByTier(@PathVariable String tierName) {
 		return ApiResponse.onSuccess(userService.getRankingByTier(tierName));
+	}
+
+	@Operation(
+		summary = "본인 티어 랭킹 조회",
+		description = "로그인한 본인의 티어 랭킹을 조회합니다."
+	)
+	@GetMapping("/rankings")
+	public ApiResponse<List<RankingResponse>> getMyTierRanking(
+		@AuthenticationPrincipal String email
+	) {
+		return ApiResponse.onSuccess(userService.getMyTierRanking(email));
 	}
 }
