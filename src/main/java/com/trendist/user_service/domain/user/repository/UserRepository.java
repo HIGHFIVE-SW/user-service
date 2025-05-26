@@ -15,8 +15,6 @@ public interface UserRepository extends JpaRepository<User, UUID> {
 
 	List<User> findByTier_TierNameOrderByExpDesc(String tierName);
 
-	List<User> findAllByRankingGreaterThanOrderByRankingAsc(int ranking);
-
-	List<User> findByTier_TierNameAndRankingGreaterThanOrderByRankingAsc(String tierName, int ranking);
+	List<User> findByTier_TierNameOrderByRankingAsc(String tierName);
 
 }
