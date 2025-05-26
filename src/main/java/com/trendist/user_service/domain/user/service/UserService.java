@@ -80,8 +80,8 @@ public class UserService {
 	}
 
 	public List<RankingResponse> getMyTierRanking(String email) {
-		User currentUser = getUser(email);
-		Tier userTier = currentUser.getTier();
+		User user = getUser(email);
+		Tier userTier = user.getTier();
 		String tierName = userTier.getTierName();
 		return getRankingByTier(tierName);
 	}
