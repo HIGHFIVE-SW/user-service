@@ -35,7 +35,14 @@ public class RankingScheduler {
 
 	private void updateAllUserTiers(List<User> allUsers, List<Tier> sortedTiers) {
 		for (User user : allUsers) {
-			Tier newTier = calculateTierByExp(user.getExp(), sortedTiers);
+			Tier newTier = sortedTiers.get(sortedTiers.size() - 1);
+
+			for (Tier tier : sortedTiers) {
+				if (user.getExp() >= tier.getRequiredExp()) {
+					newTier = tier;
+					break;
+				}
+			}
 			user.setTier(newTier);
 		}
 	}
@@ -51,15 +58,6 @@ public class RankingScheduler {
 
 			assignRankingByExp(users);
 		}
-	}
-
-	private Tier calculateTierByExp(int exp, List<Tier> sortedTiers) {
-		for (Tier tier : sortedTiers) {
-			if (exp >= tier.getRequiredExp()) {
-				return tier;
-			}
-		}
-		return sortedTiers.get(sortedTiers.size() - 1);
 	}
 
 	private void assignRankingByExp(List<User> users) {
