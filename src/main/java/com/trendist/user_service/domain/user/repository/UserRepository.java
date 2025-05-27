@@ -13,7 +13,6 @@ public interface UserRepository extends JpaRepository<User, UUID> {
 
 	Optional<User> findById(UUID userId);
 
-	List<User> findAllByOrderByExpDesc();
+	List<User> findByTier_TierNameOrderByRankingAsc(String tierName);
 
-	List<User> findAllByRankingGreaterThanOrderByRankingAsc(int ranking);
 }
