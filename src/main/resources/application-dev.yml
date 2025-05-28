@@ -9,7 +9,7 @@ spring:
       region:
         static: ap-northeast-2
   datasource:
-    url: ENC(YU7Ez+Pl4P4PNneCm6+lPs67adGFJeIiv3PRPkBWmJfNKEt5s+xcu/usTErojlLj6YnjgWqKsYEIr6mHGW+qE+AUdd0ghAk0KFlAPucf5GMk0I1Jx5cVe6LEIbP9DsYQ)
+    url: ENC(GBGaWaClrQD1VFA0zu7xhyyWS5KCQbUQpAcqBE0TSfVxtRdsGJNBgE0IP4kaQ9OZU0w8QYSRa480KG8WDMHlRhAbu67E2vWuWs96ubqcMlMTi7re8UhEysPMIpbTQreY)
     username: admin
     password: ENC(4xY2Fy6SFr57kP3Fo36jwsy4CXilVjxe)
     driver-class-name: com.mysql.cj.jdbc.Driver
