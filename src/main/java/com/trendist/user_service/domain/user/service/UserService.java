@@ -9,10 +9,12 @@ import com.trendist.user_service.domain.tier.domain.Tier;
 import com.trendist.user_service.domain.user.domain.User;
 import com.trendist.user_service.domain.user.dto.request.UserFirstLoginSetupRequest;
 import com.trendist.user_service.domain.user.dto.request.UserProfileUpdateRequest;
+import com.trendist.user_service.domain.user.dto.request.UserUpdateExpRequest;
 import com.trendist.user_service.domain.user.dto.response.RankingResponse;
 import com.trendist.user_service.domain.user.dto.response.UserFirstLoginSetupResponse;
 import com.trendist.user_service.domain.user.dto.response.UserProfileResponse;
 import com.trendist.user_service.domain.user.dto.response.UserProfileUpdateResponse;
+import com.trendist.user_service.domain.user.dto.response.UserUpdateExpResponse;
 import com.trendist.user_service.domain.user.repository.UserRepository;
 import com.trendist.user_service.global.exception.ApiException;
 import com.trendist.user_service.global.response.status.ErrorStatus;
@@ -94,5 +96,12 @@ public class UserService {
 	private User getUser(UUID userId) {
 		return userRepository.findById(userId)
 			.orElseThrow(() -> new ApiException(ErrorStatus._USER_NOT_FOUND));
+	}
+
+	public UserUpdateExpResponse updateExp(UUID userId, UserUpdateExpRequest request) {
+		User user = getUser(userId);
+		int newExp = user.getExp() + request.exp();
+		user.setExp(newExp);
+		return UserUpdateExpResponse.from(userRepository.save(user));
 	}
 }
