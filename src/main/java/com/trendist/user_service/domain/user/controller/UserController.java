@@ -97,7 +97,7 @@ public class UserController {
 		summary = "리뷰글을 작성한 특정 유저의 exp update",
 		description = "리뷰글을 작성한 특정 유저의 exp를 더해줍니다."
 	)
-	@PatchMapping("/{userId}/exp")
+	@PostMapping("/{userId}/exp")
 	public ApiResponse<UserUpdateExpResponse> addExp(
 		@PathVariable UUID userId,
 		@RequestBody int expToAdd
