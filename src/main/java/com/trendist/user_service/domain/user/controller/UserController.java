@@ -18,6 +18,7 @@ import com.trendist.user_service.domain.user.dto.response.RankingResponse;
 import com.trendist.user_service.domain.user.dto.response.UserFirstLoginSetupResponse;
 import com.trendist.user_service.domain.user.dto.response.UserProfileResponse;
 import com.trendist.user_service.domain.user.dto.response.UserProfileUpdateResponse;
+import com.trendist.user_service.domain.user.dto.response.UserUpdateExpResponse;
 import com.trendist.user_service.domain.user.service.UserService;
 import com.trendist.user_service.global.response.ApiResponse;
 
@@ -97,10 +98,10 @@ public class UserController {
 		description = "리뷰글을 작성한 특정 유저의 exp를 더해줍니다."
 	)
 	@PatchMapping("/{userId}/exp")
-	public void addExp(
+	public ApiResponse<UserUpdateExpResponse> addExp(
 		@PathVariable UUID userId,
 		@RequestBody int expToAdd
-	){
-		userService.updateExp(userId, expToAdd);
+	) {
+		return ApiResponse.onSuccess(userService.updateExp(userId, expToAdd));
 	}
 }

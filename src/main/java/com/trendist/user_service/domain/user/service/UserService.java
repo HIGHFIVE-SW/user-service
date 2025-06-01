@@ -13,6 +13,7 @@ import com.trendist.user_service.domain.user.dto.response.RankingResponse;
 import com.trendist.user_service.domain.user.dto.response.UserFirstLoginSetupResponse;
 import com.trendist.user_service.domain.user.dto.response.UserProfileResponse;
 import com.trendist.user_service.domain.user.dto.response.UserProfileUpdateResponse;
+import com.trendist.user_service.domain.user.dto.response.UserUpdateExpResponse;
 import com.trendist.user_service.domain.user.repository.UserRepository;
 import com.trendist.user_service.global.exception.ApiException;
 import com.trendist.user_service.global.response.status.ErrorStatus;
@@ -96,15 +97,15 @@ public class UserService {
 			.orElseThrow(() -> new ApiException(ErrorStatus._USER_NOT_FOUND));
 	}
 
-	public void updateExp(UUID userId, int expToAdd) {
+	public UserUpdateExpResponse updateExp(UUID userId, int expToAdd) {
 		User user = getUser(userId);
 
 		// 처리 전 기존 exp 값
 		int oldExp = user.getExp();
 		// 새로운 exp 계산
 		int newExp = oldExp + expToAdd;
-
 		user.setExp(newExp);
-		userRepository.save(user);
+
+		return UserUpdateExpResponse.from(userRepository.save(user));
 	}
 }
