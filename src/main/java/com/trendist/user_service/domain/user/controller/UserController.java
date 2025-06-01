@@ -14,12 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.trendist.user_service.domain.user.dto.request.UserFirstLoginSetupRequest;
 import com.trendist.user_service.domain.user.dto.request.UserProfileUpdateRequest;
-import com.trendist.user_service.domain.user.dto.request.UserUpdateExpRequest;
 import com.trendist.user_service.domain.user.dto.response.RankingResponse;
 import com.trendist.user_service.domain.user.dto.response.UserFirstLoginSetupResponse;
 import com.trendist.user_service.domain.user.dto.response.UserProfileResponse;
 import com.trendist.user_service.domain.user.dto.response.UserProfileUpdateResponse;
-import com.trendist.user_service.domain.user.dto.response.UserUpdateExpResponse;
 import com.trendist.user_service.domain.user.service.UserService;
 import com.trendist.user_service.global.response.ApiResponse;
 
@@ -98,11 +96,11 @@ public class UserController {
 		summary = "리뷰글을 작성한 특정 유저의 exp update",
 		description = "리뷰글을 작성한 특정 유저의 exp를 더해줍니다."
 	)
-	@PostMapping("/{userId}/exp")
+	@PatchMapping("/{userId}/exp")
 	public void addExp(
 		@PathVariable UUID userId,
-		@RequestBody UserUpdateExpRequest request
+		@RequestBody int expToAdd
 	){
-		userService.updateExp(userId, request);
+		userService.updateExp(userId, expToAdd);
 	}
 }
