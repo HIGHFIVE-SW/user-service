@@ -99,10 +99,10 @@ public class UserController {
 		description = "리뷰글을 작성한 특정 유저의 exp를 더해줍니다."
 	)
 	@PostMapping("/{userId}/exp")
-	public ApiResponse<UserUpdateExpResponse> addExp(
+	public void addExp(
 		@PathVariable UUID userId,
 		@RequestBody UserUpdateExpRequest request
 	){
-		return ApiResponse.onSuccess(userService.updateExp(userId, request));
+		userService.updateExp(userId, request);
 	}
 }
