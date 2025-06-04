@@ -1,0 +1,89 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: user-service
+  cloud:
+    aws:
+      region:
+        static: ap-northeast-2
+  datasource:
+    url: ${DB_URL}
+    username: admin
+    password: ${DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
+    defer-datasource-initialization: true
+
+  sql:
+    init:
+      mode: always
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${CLIENT_ID}
+            client-secret: ${CLIENT_SECRET}
+            scope:
+              - email
+              - profile
+            redirect-uri: "http://k8s-trendis-gateway-55272f9955-9df8d864228042f1945c5a7d6a1bcde2.ke.kr-central-2.kakaocloud.com/login/oauth2/code/google"
+            client-name: google
+        provider:
+          google:
+            authorization-uri: https://accounts.google.com/o/oauth2/v2/auth
+            token-uri: https://oauth2.googleapis.com/token
+            user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo
+            user-name-attribute: sub
+app:
+  frontend:
+    redirect-uri: http://localhost:3000
+
+eureka:
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+jwt:
+  issuer: ${ISSUER}
+  secret_key: ${JWT_SECRET}
+
+server-uri: http://localhost:8000
+
+aws:
+  s3:
+    accessKey: ${S3_ACCESS_KEY}
+    secretKey: ${S3_SECRET_KEY}
+    bucketName: ${S3_BUCKET}
+    region: ap-northeast-2
+    prefix: profiles
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: health
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.security.oauth2.client: DEBUG
+    org.springframework.security.oauth2.core: DEBUG
+    com.trendist: INFO
