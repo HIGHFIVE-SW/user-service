@@ -19,6 +19,15 @@ jobs:
           )/bin/linux/amd64/kubectl"
           chmod +x kubectl
           sudo mv kubectl /usr/local/bin/
+          
+      - name: Debug KUBE_CONFIG_DATA length
+        run: |
+          echo "---- begin secret preview -----"
+          # 맨 앞 100자를 찍고, 전체 문자열 길이를 출력
+          echo "${{ secrets.KUBE_CONFIG_DATA }}" | head -c 100
+          echo ""; echo "… (중략) …"
+          echo "전체 길이: $(echo "${{ secrets.KUBE_CONFIG_DATA }}" | wc -c)"
+          echo "---- end secret preview -------"
 
       - name: Setup kubeconfig
         run: |
