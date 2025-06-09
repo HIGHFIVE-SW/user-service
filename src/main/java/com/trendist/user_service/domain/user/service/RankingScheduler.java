@@ -21,7 +21,7 @@ public class RankingScheduler {
 	private final UserRepository userRepository;
 	private final TierRepository tierRepository;
 
-	@Scheduled(cron = "0 0 0/6 * * *")
+	@Scheduled(cron = "0 0/10 * * * *")
 	@Transactional
 	public void updateUserRanking() {
 		List<Tier> sortedTiers = tierRepository.findAllByOrderByRequiredExpDesc();
