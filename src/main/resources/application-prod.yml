@@ -37,7 +37,7 @@ spring:
             scope:
               - email
               - profile
-            redirect-uri: "http://k8s-trendis-gateway-55272f9955-9df8d864228042f1945c5a7d6a1bcde2.ke.kr-central-2.kakaocloud.com/login/oauth2/code/google"
+            redirect-uri: "http://trendist.site/login/oauth2/code/google"
             client-name: google
         provider:
           google:
