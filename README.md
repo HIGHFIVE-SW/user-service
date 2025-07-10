@@ -17,6 +17,12 @@ Trendist는 세상의 흐름을 읽고, 나에게 맞는 대외활동을 찾는 
 ## 📝 레포지토리 소개
 user-service는 사용자 및 티어와 관련한 기능들이 구현되어 있는 레포지토리입니다. <br/>
 
+<br>
+
+## 🔨 개발 및 배포 아키텍처
+<img width="569" height="333" alt="image" src="https://github.com/user-attachments/assets/169ca8c8-1b44-4659-9218-8d504dfe8364" />  
+<img width="569" height="333" alt="image" src="https://github.com/user-attachments/assets/539749cb-31c7-47b0-b6db-82825a33beb3" />
+
 <br />
 
 ## 🙋‍♀️ BE 팀원 소개
